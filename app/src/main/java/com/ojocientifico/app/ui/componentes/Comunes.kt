@@ -56,6 +56,10 @@ import com.ojocientifico.app.ui.theme.CoralAviso
 import com.ojocientifico.app.ui.theme.LocalAjustesVisuales
 import com.ojocientifico.app.ui.theme.VerdeNatural
 
+/** Concuerda el sustantivo con la cantidad: «1 ficha», «3 fichas». */
+fun contar(cantidad: Int, singular: String, plural: String): String =
+    if (cantidad == 1) "$cantidad $singular" else "$cantidad $plural"
+
 /** Altura mínima cómoda para dedos de 8 años. */
 val AlturaTactilMinima = 56.dp
 

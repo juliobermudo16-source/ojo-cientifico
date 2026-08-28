@@ -35,6 +35,7 @@ import com.ojocientifico.app.domain.model.Muestra
 import com.ojocientifico.app.ui.componentes.BarraXp
 import com.ojocientifico.app.ui.componentes.BotonExpedicion
 import com.ojocientifico.app.ui.componentes.CabeceraExpedicion
+import com.ojocientifico.app.ui.componentes.SelloBloqueado
 import com.ojocientifico.app.ui.componentes.TarjetaCampo
 import com.ojocientifico.app.ui.ilustraciones.IlustracionMuestra
 import com.ojocientifico.app.ui.theme.AmarilloDescubrimiento
@@ -166,7 +167,7 @@ private fun TarjetaDescubrimiento(
         }
         Spacer(Modifier.height(8.dp))
         Text(
-            if (revelada) muestra.nombre else "Muestra ${muestra.nivelRequerido}",
+            if (revelada) muestra.nombre else "Sin identificar",
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurface,
             maxLines = 2
@@ -216,13 +217,13 @@ private fun TarjetaDescubrimiento(
                 )
             }
         } else {
-            Spacer(Modifier.height(6.dp))
             Text(
-                "Toca para ir a observarla",
+                "Se revela al observarla bien",
                 style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.primary,
-                textAlign = TextAlign.Start
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
+            Spacer(Modifier.height(6.dp))
+            SelloBloqueado("Rango ${muestra.nivelRequerido}")
         }
     }
 }

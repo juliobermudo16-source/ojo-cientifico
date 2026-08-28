@@ -35,6 +35,7 @@ import com.ojocientifico.app.domain.model.CatalogoRasgos
 import com.ojocientifico.app.domain.model.FichaCientifica
 import com.ojocientifico.app.ui.componentes.CabeceraExpedicion
 import com.ojocientifico.app.ui.componentes.ChipCaracteristica
+import com.ojocientifico.app.ui.componentes.contar
 import com.ojocientifico.app.ui.componentes.EstadoChip
 import com.ojocientifico.app.ui.componentes.EstadoVacio
 import com.ojocientifico.app.ui.componentes.Estrellas
@@ -62,7 +63,8 @@ fun PantallaCuaderno(panel: PanelViewModel, onVolver: () -> Unit) {
     Column(Modifier.fillMaxSize()) {
         CabeceraExpedicion(
             "Cuaderno científico",
-            if (fichas.isEmpty()) "Todavía sin fichas" else "${fichas.size} fichas registradas",
+            if (fichas.isEmpty()) "Todavía sin fichas"
+            else contar(fichas.size, "ficha registrada", "fichas registradas"),
             onVolver
         )
 

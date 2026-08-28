@@ -34,6 +34,7 @@ import com.ojocientifico.app.domain.model.CatalogoRasgos
 import com.ojocientifico.app.ui.componentes.BotonExpedicion
 import com.ojocientifico.app.ui.componentes.CabeceraExpedicion
 import com.ojocientifico.app.ui.componentes.ChipCaracteristica
+import com.ojocientifico.app.ui.componentes.contar
 import com.ojocientifico.app.ui.componentes.EstadoChip
 import com.ojocientifico.app.ui.componentes.EstadoVacio
 import com.ojocientifico.app.ui.componentes.GloboDeIris
@@ -62,7 +63,8 @@ fun PantallaRepaso(
     Column(Modifier.fillMaxSize()) {
         CabeceraExpedicion(
             "Vuelve a observar",
-            if (sugerencias.isEmpty()) "Nada pendiente" else "${sugerencias.size} muestras que merecen otra mirada",
+            if (sugerencias.isEmpty()) "Nada pendiente"
+            else contar(sugerencias.size, "muestra que merece otra mirada", "muestras que merecen otra mirada"),
             onVolver
         )
 

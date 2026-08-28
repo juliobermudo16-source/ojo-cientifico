@@ -38,6 +38,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ojocientifico.app.domain.model.TipoMision
 import com.ojocientifico.app.ui.componentes.BarraXp
 import com.ojocientifico.app.ui.componentes.BotonExpedicion
+import com.ojocientifico.app.ui.componentes.contar
 import com.ojocientifico.app.ui.componentes.GloboDeIris
 import com.ojocientifico.app.ui.componentes.TarjetaCampo
 import com.ojocientifico.app.ui.componentes.TituloSeccion
@@ -228,7 +229,7 @@ fun PantallaLaboratorio(
             val zonas = listOf(
                 ZonaLab(
                     "Muestrario", "Observa cualquier muestra",
-                    "${estado.totalMuestras} muestras",
+                    contar(estado.totalMuestras, "muestra", "muestras"),
                     ObjetoLaboratorio.MUESTRARIO, TurquesaAgua, Rutas.MUESTRARIO
                 ),
                 ZonaLab(
@@ -238,7 +239,7 @@ fun PantallaLaboratorio(
                 ),
                 ZonaLab(
                     "Cuaderno", "Tus fichas científicas",
-                    "${estado.fichas} fichas",
+                    contar(estado.fichas, "ficha", "fichas"),
                     ObjetoLaboratorio.CUADERNO, CoralAviso, Rutas.CUADERNO
                 ),
                 ZonaLab(
@@ -253,7 +254,7 @@ fun PantallaLaboratorio(
                 ),
                 ZonaLab(
                     "Vuelve a observar", "Lo que se te escapó",
-                    if (estado.pendientesDeRepaso > 0) "${estado.pendientesDeRepaso} pendientes" else "Todo revisado",
+                    if (estado.pendientesDeRepaso > 0) contar(estado.pendientesDeRepaso, "pendiente", "pendientes") else "Todo revisado",
                     ObjetoLaboratorio.LUPA, AzulProfundo, Rutas.REPASO
                 )
             )

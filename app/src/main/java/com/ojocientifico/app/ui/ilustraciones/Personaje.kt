@@ -23,6 +23,9 @@ import com.ojocientifico.app.ui.theme.Tierra
 import com.ojocientifico.app.ui.theme.VerdeNatural
 import kotlin.math.min
 
+/** Vidrio de la lupa: claro para leerse igual sobre papel que sobre azul profundo. */
+private val CristalLupa = Color(0xFFE6F2F8)
+
 /** Gestos de Iris, la exploradora que acompaña al niño. */
 enum class GestoIris { NEUTRO, ANIMANDO, PENSANDO, CELEBRANDO }
 
@@ -57,9 +60,9 @@ fun DrawScope.dibujarIris(gesto: GestoIris) {
     val pelo = Color(0xFF4A2E1E)
     val chaleco = VerdeNatural
 
-    // Coleta
-    drawCircle(pelo, s(0.10f), p(0.80f, 0.42f))
-    drawLine(pelo, p(0.70f, 0.36f), p(0.82f, 0.44f), strokeWidth = s(0.09f), cap = StrokeCap.Round)
+    // Coleta lateral, al lado contrario del brazo que sostiene la lupa
+    drawCircle(pelo, s(0.09f), p(0.23f, 0.46f))
+    drawLine(pelo, p(0.33f, 0.38f), p(0.24f, 0.46f), strokeWidth = s(0.075f), cap = StrokeCap.Round)
 
     // Cuerpo con chaleco de campo
     val cuerpo = Path().apply {
@@ -157,10 +160,17 @@ fun DrawScope.dibujarIris(gesto: GestoIris) {
 
     // Brazo con lupa cuando anima o celebra
     if (gesto == GestoIris.ANIMANDO || gesto == GestoIris.CELEBRANDO) {
-        drawLine(piel, p(0.68f, 0.72f), p(0.90f, 0.56f), strokeWidth = s(0.055f), cap = StrokeCap.Round)
-        drawCircle(AmarilloDescubrimiento.copy(alpha = 0.45f), s(0.10f), p(0.95f, 0.44f))
-        drawCircle(Tierra, s(0.10f), p(0.95f, 0.44f), style = Stroke(width = s(0.028f)))
-        drawLine(Tierra, p(0.90f, 0.52f), p(0.84f, 0.60f), strokeWidth = s(0.030f), cap = StrokeCap.Round)
+        // Brazo en alto con la lupa, por encima del hombro
+        drawLine(piel, p(0.68f, 0.72f), p(0.84f, 0.40f), strokeWidth = s(0.055f), cap = StrokeCap.Round)
+        drawLine(Tierra, p(0.86f, 0.36f), p(0.80f, 0.46f), strokeWidth = s(0.032f), cap = StrokeCap.Round)
+        // El cristal es claro para que se lea como vidrio sobre cualquier fondo
+        drawCircle(CristalLupa, s(0.095f), p(0.90f, 0.25f))
+        drawCircle(Tierra, s(0.095f), p(0.90f, 0.25f), style = Stroke(width = s(0.030f)))
+        drawArc(
+            color = Color.White, startAngle = 165f, sweepAngle = 65f, useCenter = false,
+            topLeft = p(0.83f, 0.18f), size = Size(s(0.14f), s(0.14f)),
+            style = Stroke(width = s(0.020f), cap = StrokeCap.Round)
+        )
     } else {
         drawLine(piel, p(0.68f, 0.72f), p(0.80f, 0.92f), strokeWidth = s(0.055f), cap = StrokeCap.Round)
     }

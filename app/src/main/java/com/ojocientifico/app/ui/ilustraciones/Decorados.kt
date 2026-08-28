@@ -47,7 +47,9 @@ fun DrawScope.dibujarObjeto(objeto: ObjetoLaboratorio) {
 
     when (objeto) {
         ObjetoLaboratorio.LUPA -> {
-            drawCircle(AmarilloDescubrimiento.copy(alpha = 0.30f), s(0.30f), p(0.42f, 0.40f))
+            // Cristal claro: un amarillo translucido se ensuciaba sobre el fondo azul.
+            drawCircle(Color(0xFFE6F2F8), s(0.30f), p(0.42f, 0.40f))
+            drawCircle(AmarilloDescubrimiento.copy(alpha = 0.22f), s(0.30f), p(0.42f, 0.40f))
             drawCircle(AzulProfundo, s(0.30f), p(0.42f, 0.40f), style = Stroke(width = s(0.075f)))
             drawLine(Tierra, p(0.63f, 0.61f), p(0.86f, 0.86f), strokeWidth = s(0.11f), cap = StrokeCap.Round)
             drawLine(AmbarCalido, p(0.63f, 0.61f), p(0.86f, 0.86f), strokeWidth = s(0.045f), cap = StrokeCap.Round)

@@ -449,7 +449,9 @@ Compilado y verificado localmente con JDK 17.0.20.1, Gradle 8.9, AGP 8.5.2 y And
 | `./gradlew lintDebug` | ✅ **0 errores**, avisos informativos |
 | `./gradlew assembleDebug` | ✅ **APK generado (17,4 MB)** |
 
-La aplicación **no** ha sido ejecutada en un dispositivo ni en un emulador durante el desarrollo: la verificación es de compilación, tests y análisis estático.
+Además, la aplicación se ha **ejecutado y recorrido en un emulador Android 14** (Pixel 5, x86_64): pantalla de bienvenida, laboratorio, misión de observación completa con su feedback, colección, insignias y muro de zonas. Sin fallos ni cierres inesperados, y con el progreso persistido correctamente entre pantallas.
+
+Queda pendiente probarla en un teléfono físico.
 
 ---
 
