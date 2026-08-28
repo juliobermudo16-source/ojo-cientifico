@@ -1,5 +1,7 @@
 # Ojo Científico
 
+[![Compilar APK de Ojo Científico](https://github.com/juliobermudo16-source/ojo-cientifico/actions/workflows/build-apk.yml/badge.svg)](https://github.com/juliobermudo16-source/ojo-cientifico/actions/workflows/build-apk.yml)
+
 **Software educativo para el desarrollo de la observación científica y el registro morfológico en niños de 8 a 12 años.**
 
 > *Observa. Registra. Descubre.*
