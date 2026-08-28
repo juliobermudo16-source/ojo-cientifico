@@ -1,0 +1,787 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "288a377bccc1686f017187fca297319b",
+    "entities": [
+      {
+        "tableName": "opcion_rasgo",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `categoria` TEXT NOT NULL, `etiqueta` TEXT NOT NULL, `pista` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "categoria",
+            "columnName": "categoria",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "etiqueta",
+            "columnName": "etiqueta",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pista",
+            "columnName": "pista",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "muestra",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `nombre` TEXT NOT NULL, `nombreCientifico` TEXT NOT NULL, `reino` TEXT NOT NULL, `habitat` TEXT NOT NULL, `ilustracion` TEXT NOT NULL, `descripcion` TEXT NOT NULL, `datoCurioso` TEXT NOT NULL, `nivelRequerido` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nombre",
+            "columnName": "nombre",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nombreCientifico",
+            "columnName": "nombreCientifico",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reino",
+            "columnName": "reino",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "habitat",
+            "columnName": "habitat",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ilustracion",
+            "columnName": "ilustracion",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "descripcion",
+            "columnName": "descripcion",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "datoCurioso",
+            "columnName": "datoCurioso",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nivelRequerido",
+            "columnName": "nivelRequerido",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "rasgo_muestra",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`muestraId` TEXT NOT NULL, `opcionId` TEXT NOT NULL, `verdadero` INTEGER NOT NULL, PRIMARY KEY(`muestraId`, `opcionId`), FOREIGN KEY(`muestraId`) REFERENCES `muestra`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "muestraId",
+            "columnName": "muestraId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "opcionId",
+            "columnName": "opcionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "verdadero",
+            "columnName": "verdadero",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "muestraId",
+            "opcionId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_rasgo_muestra_opcionId",
+            "unique": false,
+            "columnNames": [
+              "opcionId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_rasgo_muestra_opcionId` ON `${TABLE_NAME}` (`opcionId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "muestra",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "muestraId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "mision",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `titulo` TEXT NOT NULL, `consigna` TEXT NOT NULL, `instruccionGuia` TEXT NOT NULL, `tipo` TEXT NOT NULL, `nivel` INTEGER NOT NULL, `orden` INTEGER NOT NULL, `muestrasIds` TEXT NOT NULL, `categorias` TEXT NOT NULL, `modoComparacion` TEXT, `criterio` TEXT, `xpBase` INTEGER NOT NULL, `requiere` TEXT, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "titulo",
+            "columnName": "titulo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "consigna",
+            "columnName": "consigna",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "instruccionGuia",
+            "columnName": "instruccionGuia",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tipo",
+            "columnName": "tipo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nivel",
+            "columnName": "nivel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "orden",
+            "columnName": "orden",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "muestrasIds",
+            "columnName": "muestrasIds",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "categorias",
+            "columnName": "categorias",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "modoComparacion",
+            "columnName": "modoComparacion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "criterio",
+            "columnName": "criterio",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "xpBase",
+            "columnName": "xpBase",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "requiere",
+            "columnName": "requiere",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_mision_nivel",
+            "unique": false,
+            "columnNames": [
+              "nivel"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_mision_nivel` ON `${TABLE_NAME}` (`nivel`)"
+          },
+          {
+            "name": "index_mision_orden",
+            "unique": false,
+            "columnNames": [
+              "orden"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_mision_orden` ON `${TABLE_NAME}` (`orden`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "perfil",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `alias` TEXT NOT NULL, `avatar` INTEGER NOT NULL, `xp` INTEGER NOT NULL, `creadoMillis` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "alias",
+            "columnName": "alias",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "avatar",
+            "columnName": "avatar",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "xp",
+            "columnName": "xp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "creadoMillis",
+            "columnName": "creadoMillis",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "progreso_mision",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`misionId` TEXT NOT NULL, `completada` INTEGER NOT NULL, `mejorEstrellas` INTEGER NOT NULL, `mejorPrecision` REAL NOT NULL, `intentos` INTEGER NOT NULL, `ultimaFechaMillis` INTEGER NOT NULL, PRIMARY KEY(`misionId`))",
+        "fields": [
+          {
+            "fieldPath": "misionId",
+            "columnName": "misionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completada",
+            "columnName": "completada",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mejorEstrellas",
+            "columnName": "mejorEstrellas",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mejorPrecision",
+            "columnName": "mejorPrecision",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "intentos",
+            "columnName": "intentos",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ultimaFechaMillis",
+            "columnName": "ultimaFechaMillis",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "misionId"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "insignia",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `desbloqueada` INTEGER NOT NULL, `fechaMillis` INTEGER, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "desbloqueada",
+            "columnName": "desbloqueada",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fechaMillis",
+            "columnName": "fechaMillis",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "descubrimiento",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`muestraId` TEXT NOT NULL, `desbloqueado` INTEGER NOT NULL, `fechaMillis` INTEGER, PRIMARY KEY(`muestraId`))",
+        "fields": [
+          {
+            "fieldPath": "muestraId",
+            "columnName": "muestraId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "desbloqueado",
+            "columnName": "desbloqueado",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fechaMillis",
+            "columnName": "fechaMillis",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "muestraId"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "dia_actividad",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`fecha` TEXT NOT NULL, PRIMARY KEY(`fecha`))",
+        "fields": [
+          {
+            "fieldPath": "fecha",
+            "columnName": "fecha",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "fecha"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "configuracion",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `sonidoActivo` INTEGER NOT NULL, `vibracionActiva` INTEGER NOT NULL, `animacionesActivas` INTEGER NOT NULL, `textoGrande` INTEGER NOT NULL, `altoContraste` INTEGER NOT NULL, `onboardingHecho` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sonidoActivo",
+            "columnName": "sonidoActivo",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vibracionActiva",
+            "columnName": "vibracionActiva",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "animacionesActivas",
+            "columnName": "animacionesActivas",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "textoGrande",
+            "columnName": "textoGrande",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "altoContraste",
+            "columnName": "altoContraste",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "onboardingHecho",
+            "columnName": "onboardingHecho",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "ficha",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `muestraId` TEXT NOT NULL, `misionId` TEXT, `fechaMillis` INTEGER NOT NULL, `aciertos` INTEGER NOT NULL, `totalEsperado` INTEGER NOT NULL, `marcasDeMas` INTEGER NOT NULL, `estrellas` INTEGER NOT NULL, `nota` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "muestraId",
+            "columnName": "muestraId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "misionId",
+            "columnName": "misionId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fechaMillis",
+            "columnName": "fechaMillis",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "aciertos",
+            "columnName": "aciertos",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalEsperado",
+            "columnName": "totalEsperado",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "marcasDeMas",
+            "columnName": "marcasDeMas",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "estrellas",
+            "columnName": "estrellas",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nota",
+            "columnName": "nota",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_ficha_muestraId",
+            "unique": false,
+            "columnNames": [
+              "muestraId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ficha_muestraId` ON `${TABLE_NAME}` (`muestraId`)"
+          },
+          {
+            "name": "index_ficha_fechaMillis",
+            "unique": false,
+            "columnNames": [
+              "fechaMillis"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ficha_fechaMillis` ON `${TABLE_NAME}` (`fechaMillis`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "observacion",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `fichaId` INTEGER NOT NULL, `opcionId` TEXT NOT NULL, `correcta` INTEGER NOT NULL, FOREIGN KEY(`fichaId`) REFERENCES `ficha`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fichaId",
+            "columnName": "fichaId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "opcionId",
+            "columnName": "opcionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "correcta",
+            "columnName": "correcta",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_observacion_fichaId",
+            "unique": false,
+            "columnNames": [
+              "fichaId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_observacion_fichaId` ON `${TABLE_NAME}` (`fichaId`)"
+          },
+          {
+            "name": "index_observacion_opcionId",
+            "unique": false,
+            "columnNames": [
+              "opcionId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_observacion_opcionId` ON `${TABLE_NAME}` (`opcionId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "ficha",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "fichaId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "rasgo_fallado",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`muestraId` TEXT NOT NULL, `opcionId` TEXT NOT NULL, `veces` INTEGER NOT NULL, `ultimaFechaMillis` INTEGER NOT NULL, PRIMARY KEY(`muestraId`, `opcionId`))",
+        "fields": [
+          {
+            "fieldPath": "muestraId",
+            "columnName": "muestraId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "opcionId",
+            "columnName": "opcionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "veces",
+            "columnName": "veces",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ultimaFechaMillis",
+            "columnName": "ultimaFechaMillis",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "muestraId",
+            "opcionId"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "historial",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `tipo` TEXT NOT NULL, `referencia` TEXT NOT NULL, `aciertos` INTEGER NOT NULL, `fallos` INTEGER NOT NULL, `estrellas` INTEGER NOT NULL, `xpGanado` INTEGER NOT NULL, `fechaMillis` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tipo",
+            "columnName": "tipo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "referencia",
+            "columnName": "referencia",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "aciertos",
+            "columnName": "aciertos",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fallos",
+            "columnName": "fallos",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "estrellas",
+            "columnName": "estrellas",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "xpGanado",
+            "columnName": "xpGanado",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fechaMillis",
+            "columnName": "fechaMillis",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_historial_fechaMillis",
+            "unique": false,
+            "columnNames": [
+              "fechaMillis"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_historial_fechaMillis` ON `${TABLE_NAME}` (`fechaMillis`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '288a377bccc1686f017187fca297319b')"
+    ]
+  }
+}

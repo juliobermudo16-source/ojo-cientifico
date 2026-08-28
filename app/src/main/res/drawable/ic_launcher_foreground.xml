@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Ojo cientifico: parpado, iris tipo lente, pupila y destello -->
+    <path
+        android:fillColor="#F6F1E6"
+        android:pathData="M24,54 C36,36 72,36 84,54 C72,72 36,72 24,54 Z" />
+    <path
+        android:strokeColor="#0B2E4A"
+        android:strokeWidth="3.2"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M24,54 C36,36 72,36 84,54 C72,72 36,72 24,54 Z" />
+
+    <path
+        android:fillColor="#2E7D5B"
+        android:pathData="M54,54m-13.5,0a13.5,13.5 0,1 1,27 0a13.5,13.5 0,1 1,-27 0" />
+    <path
+        android:fillColor="#F2B441"
+        android:pathData="M54,54m-13.5,0a13.5,13.5 0,0 1,13.5 -13.5l0,27a13.5,13.5 0,0 1,-13.5 -13.5z" />
+    <path
+        android:fillColor="#0B2E4A"
+        android:pathData="M54,54m-6.4,0a6.4,6.4 0,1 1,12.8 0a6.4,6.4 0,1 1,-12.8 0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M49.6,48.6m-2.6,0a2.6,2.6 0,1 1,5.2 0a2.6,2.6 0,1 1,-5.2 0" />
+
+    <!-- Mango de lupa -->
+    <path
+        android:strokeColor="#8A6A46"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M65.5,65.5 L78,78" />
+    <path
+        android:strokeColor="#F2B441"
+        android:strokeWidth="2.4"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M65.5,65.5 L78,78" />
+</vector>

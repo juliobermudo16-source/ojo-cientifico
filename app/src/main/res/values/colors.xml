@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="azul_cientifico">#FF12466E</color>
+    <color name="azul_profundo">#FF0B2E4A</color>
+    <color name="verde_natural">#FF2E7D5B</color>
+    <color name="amarillo_descubrimiento">#FFF2B441</color>
+    <color name="blanco_roto">#FFF6F1E6</color>
+    <color name="tierra">#FF8A6A46</color>
+    <color name="ic_launcher_background">#FF0B2E4A</color>
+</resources>
